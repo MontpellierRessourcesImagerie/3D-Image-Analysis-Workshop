@@ -1,0 +1,14 @@
+\contentsline {chapter}{\numberline {1}3D Visualization}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Using Napari as FIJI's 3D image viewer}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}3D navigation in Napari}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Multi-channel images}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Slicing}{9}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Creating a mosaic of slices}{9}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Voxel size and scale bar}{10}{section.1.6}%
+\contentsline {chapter}{\numberline {2}3D Reconstruction}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Alignment of Sequential Histological Sections}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}3D Drift Correction}{12}{section.2.2}%
+\contentsline {section}{\numberline {2.3}3D Chromatic Aberration Correction}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}3D Stitching}{13}{section.2.4}%
+\contentsline {chapter}{\numberline {3}3D Pre- and Post-Processing}{17}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Isotropic Filtering}{17}{section.3.1}%

@@ -1,0 +1,20 @@
+\chapter{3D Pre- and Post-Processing}
+
+In the first part of this exercise we will learn to use 3D filters for pre-processing, in order to allow the detection or segmentation of objects in 3D images. In the second part we learn to use mathematical morphology, which is also used in object detection and segmentation but also for the post-processing of the segmentation results. Along the way We will pay special attention to the anisotropy we can find in 3D images and which stems from the different resolutions in the xy-plane and along the z-axis.
+
+\section{Isotropic Filtering}
+
+We will smooth the noise in an image using a 3D-Median and a 3D-Gaussian Blur filter. We will take the anisotropy of the image into account. 
+
+Open the image {\tt dub83.tif}\cite{mohler_dub}. Look at the properties of the image. What is the ratio between the voxel size along the z-axis and the voxel size in the x-y-plane? 
+
+Make two copies of the image. Apply a 3D-Median filter to one copy and a 3D-Gaussian Blur filter to the other. Use isotropic filtering, i.e. take the different voxel sizes in xy and z into account. Using a radius of 4 in x and y for the Median filter, what should the radius along the z-axis be? Likewise, using a sigma of 1.6 in x and y, what should the sigma along the z-axis be?
+
+Compare the input image and the two filtered images in napari.
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.8\textwidth]{dubFiltered}
+    \caption[C. Elegans embryo image with isotropic filtering]{C. Elegans embryo, input image, isotropic median filtered image and isotropic Gaussian filtered image.}
+    \label{celegans}
+\end{figure}

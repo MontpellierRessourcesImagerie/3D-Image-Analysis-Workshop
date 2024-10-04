@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{fernandez_fijiyama_2021}
+Romain Fernandez and Cédric Moisy.
+\newblock Fijiyama: a registration tool for 3d multimodal time-lapse imaging.
+\newblock 37(10):1482--1484.
+
+\bibitem{sarah_machado_2018_1472859}
+Sarah Machado, Vincent Mercier, and Nicolas Chiaruttini.
+\newblock Limeseg test datasets, October 2018.
+\newblock SystemX epiphysX funding.
+
+\bibitem{mohler_dub}
+William Mohler.
+\newblock Dub, c. elegans embryon.
+
+\bibitem{goos_block_2000}
+S.~Ourselin, A.~Roche, S.~Prima, and N.~Ayache.
+\newblock Block matching: A general framework to improve robustness of rigid
+  registration of medical images.
+\newblock In Scott~L. Delp, Anthony~M. {DiGoia}, and Branislav Jaramaz,
+  editors, {\em Medical Image Computing and Computer-Assisted Intervention –
+  {MICCAI} 2000}, volume 1935, pages 557--566. Springer Berlin Heidelberg.
+\newblock Series Title: Lecture Notes in Computer Science.
+
+\bibitem{parslow_sample_2014}
+Adam Parslow, Albert Cardona, and Robert~J. Bryson-Richardson.
+\newblock Sample drift correction following 4d confocal time-lapse imaging.
+\newblock (86):51086.
+
+\bibitem{preibisch_globally_2009}
+S.~Preibisch, S.~Saalfeld, and P.~Tomancak.
+\newblock Globally optimal stitching of tiled 3d microscopic image
+  acquisitions.
+\newblock 25(11):1463--1465.
+
+\bibitem{joanna_w_pylvanainen_2022_6534570}
+Joanna~W Pylvänäinen, Romain~F Laine, Sujan Ghimire, Gautier Follain, and
+  Guillaume Jacquemet.
+\newblock Fast4dregistration, May 2022.
+
+\bibitem{schindelin_fiji_2012}
+Johannes Schindelin, Ignacio Arganda-Carreras, Erwin Frise, Verena Kaynig, Mark
+  Longair, Tobias Pietzsch, Stephan Preibisch, Curtis Rueden, Stephan Saalfeld,
+  Benjamin Schmid, Jean-Yves Tinevez, Daniel~James White, Volker Hartenstein,
+  Kevin Eliceiri, Pavel Tomancak, and Albert Cardona.
+\newblock Fiji: an open-source platform for biological-image analysis.
+\newblock 9(7):676--682.
+
+\bibitem{sofroniew_nicholas_napari_2022}
+Nicholas Sofroniew, Talley Lambert, Kira Evans, Juan Nunez-Iglesias, Grzegorz
+  Bokota, Philip Winston, Gonzalo Peña-Castellanos, Kevin Yamauchi, Matthias
+  Bussonnier, Draga Doncila~Pop, Ahmet Can~Solak, Ziyang Liu, Pam Wadhwa,
+  Alister Burt, Genevieve Buckley, Andrew Sweet, Lukasz Migas, Volker
+  Hilsenstein, Lorenzo Gaifas, Jordão Bragantini, Jaime Rodríguez-Guerra,
+  Hector Muñoz, Jeremy Freeman, Peter Boone, Alan Lowe, Christoph Gohlke, Loic
+  Royer, Andrea {PIERRÉ}, Hagai Har-Gil, and Abigail {McGovern}.
+\newblock napari: a multi-dimensional image viewer for python.
+
+\bibitem{thevenaz_pyramid_1998}
+P.~Thevenaz, U.E. Ruttimann, and M.~Unser.
+\newblock A pyramid approach to subpixel registration based on intensity.
+\newblock 7(1):27--41.
+
+\bibitem{jean_yves_tinevez_2021_5220610}
+Jean-Yves Tinevez, Joanna~W. Pylvänäinen, and Guillaume Jacquemet.
+\newblock {Segmenting cells in a spheroid in 3D using 2D StarDist within
+  TrackMate}, August 2021.
+
+\end{thebibliography}

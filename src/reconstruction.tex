@@ -1,0 +1,83 @@
+\chapter{3D Reconstruction}
+
+In this exercise we will use different image registration methods to build a 3D view from aligned slices, correct 3D drift, correct chromatic aberration and stitch a 3D mosaic. We will use different FIJI plugins and inspect the results with napari.
+
+\section{Alignment of Sequential Histological Sections}
+
+We will use the FIJI plugin stackreg\cite{thevenaz_pyramid_1998} in this exercise. It uses the phase correlation based registration approach. It registers neighboring slices of the stack pairwise. The registration starts from the slice selected when the plugin is run and advances from there in both directions. The initially selected slice, called the anchor, is the one that will not be transformed.
+
+Open the image {\tt rat-brain.tif}. In order to make the 3D display easier, invert the contrast, then transfer the image to napari. You can see that the slices are not aligned.
+
+In FIJI duplicate the stack, select the slice number 9 and run stackreg, using the rigid-body transformation. To find and run plugins you can use the ImageJ search-bar. 
+
+Compare the registered image to the original in napari. To transfer a second image to napari without replacing the first, you can use {\tt Get Labels} instead of {\tt Get Image} and then use the layers context menu to convert the labels to an image.
+
+Align the original stack again with the rigid-body transformation, this time using slice 1 as anchor. What happens?
+
+Align the stack using the affine transformation. What do you think about the result?
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.8\textwidth]{ratbrains}
+    \caption[Alignment of histological sections]{Sequential histological sections unaligned, aligned with the rigid-body transformation and the affine transformation.}
+    \label{ratbrain}
+\end{figure}
+
+\section{3D Drift Correction}
+
+In this exercise we will align a moving 3D object between different time-points. Open the image {\tt LargeDrift.tif}\cite{joanna_w_pylvanainen_2022_6534570}. This is a synthetic image that could represent a moving cell. Run the {\tt Correct 3D Drift} script\cite{parslow_sample_2014} in FIJI. As in the last exercise, {\tt Correct 3D Drift} uses the phase correlation based registration approach. Compare the result with the original time-series image in napari.
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.4\textwidth]{driftCorrected}
+    \caption[Drift corrected time-series]{Drift corrected and original time-series as a temporal-color-coded projection.}
+    \label{drift}
+\end{figure}
+
+\section{3D Chromatic Aberration Correction}
+
+We will now correct the chromatic abberation of two channels of a 3D image using the FIJI plugin Fijiyama\cite{fernandez_fijiyama_2021}. Fijiyama uses the {\tt block matching algorithm}\cite{goos_block_2000} that calculates the transformation from blocks of the image and then applies it to the whole image.
+
+Open the two images {\tt C1-Filopodia.tif} and {\tt C2-Filopodia.tif}\cite{joanna_w_pylvanainen_2022_6534570} and transfer them to napari. Run the Fijiyama plugin and press the {\tt Two images registration} button. The plugin will ask for the anchor image, the moving image, an empty output folder and a series name. It will then tell you that the images are to big and propose to use sub-sampling. Answer with ''Yes''. The registration manager window will now be shown. Select {\tt Automatic registration}, {\tt Rigid} and {\tt Block Matching} and press the {\tt Start this action button}. After the registration result shows up, press the {\tt Export Results} button and tell the plugin to use the dimensions of the reference image for the result. An image with the name {\tt FINAL} will be displayed.
+
+Split the channels of the {\tt FINAL} image in FIJI, transfer them to napari as labels and convert the labels to images. Compare the original image with the registered image. 
+
+\begin{figure}[h!]
+  \centering
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{filopodiaCA}
+    \caption[filopodia]{The two channels before registration.}
+    \label{filopodia}
+\end{subfigure}  
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{filopodiaCACorrected}
+    \caption[filopodia corrected]{The two channels after registration.}
+    \label{filopodiaCorrected}
+\end{subfigure}  
+   \caption[An image with chromatic aberration]{An image with chromatic aberration before and after correction.}
+   \label{filopodia_input_and_corrected}
+\end{figure}
+
+\section{3D Stitching}
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.6\textwidth]{drosophilaLarvaStacks}
+    \caption[Drosophila larva individual stacks]{MIP projections of the individual drosophila larva stacks.}
+    \label{drosophilaLarvaStack}
+\end{figure}
+
+To have a large field of view and a high resolution in the same time we can take overlapping image stacks at a number of positions and stitch them together. You find 3 channels of the drosophila larva image\cite{preibisch_globally_2009} in the folders {\tt C1}, {\tt C2} and {\tt C3}. We will use the FIJI plugin {\tt Grid/Collection Stitching}\cite{preibisch_globally_2009} to do the job. We will calculate the transformation on channel three, while stitching it in the same time and then apply the same transformation to stitch the two other channels. 
+
+Run the {\tt Grid/Collection Stitching} in FIJI. Select {\tt Unknown position} and {\tt All files in directory} in the first dialog. Set the directory to the {\tt C3}-directory and make sure that {\tt Linear blending} and {\tt Fuse and display} are selected. Run the stitching and wait until the fused result image for channel 3 is displayed.
+
+The plugin has written the transformations of the individual stacks to a file {\tt TileConfiguration.registered.txt} in the {\tt C3}-folder. Copy that file to the {\tt C1} and {\tt C2} folders. Open the copied files and replace C3 with C1 and C2 respectively. Run the {\tt Grid/Collection Stitching}-plugin again. This time select {\tt Positions from file} and {\tt Defined by TileConf} in the first dialog. Uncheck the {\tt Compute overlap} option in the second dialog and run the plugin on the {\tt C2} folder. When finished repeat the procedure for the {\tt C1} folder. You should now have the 3 stitched and merged images of the three channels open. Merge the channels in FIJI using {\tt Image>Color>Merge Channels}. 
+
+We do not know the voxel size of the image and it is not in the image metadata. In order to nevertheless achieve a resonable 3D display, set the x and y size to 1 and the z size to 5 in FIJI via the {\tt Image>Properties} menu. Transfer the image to napari to examine the result of the stitching.
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.6\textwidth]{drosophilaLarva}
+    \caption[Drosophila larva stitched mosaic]{The stitched mosaic of the  drosophila larva stacks.}
+    \label{drosophilaLarva}
+\end{figure}

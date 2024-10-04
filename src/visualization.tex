@@ -1,0 +1,112 @@
+\chapter{3D Visualization}
+
+In this exercise we will learn how to use the multi-dimensional image viewer napari\cite{sofroniew_nicholas_napari_2022} and explore different ways to visualize 3D images. We will use napari in combination with FIJI/ImageJ\cite{schindelin_fiji_2012} and transfer images to napari with the napari-plugin napari-j.
+
+\section{Using Napari as FIJI's 3D image viewer}
+
+In this workshop we will often use FIJI to work on 3D images and napari to display the results. We will open an image in FIJI and send it to napari using the napari plugin napari-j.
+
+To make napari and FIJI communicate, we have to run FIJI from napari. Open napari and run the command {\tt Plugins>naparij>Connection}. This will start FIJI. In napari close the {\tt Connection} panel. Open the image {\tt Spheroid-3D.tif}\cite{jean_yves_tinevez_2021_5220610} in FIJI. Close the {\tt Connection} panel in napari and open the {\tt Image} panel from the naparij menu. Press the {\tt Get Image} button to get the active image from FIJI. 
+
+The image will be added to napari as a layer. The {\tt layer controls} panel allows to modify the display of the selected layer. Change the {\tt colormap} to {\tt bob orange} and the {\tt rendering} to {\tt attenuated mip}.
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.4\textwidth]{spheroid3d}
+    \caption[Nuclei in a cell-spheroid]{Attenuated mip rendering of the nuclei in a cell spheroid.}
+    \label{spheroid}
+\end{figure}
+
+\section{3D navigation in Napari}
+
+We will now learn how to navigate in the 3D scene displayed by napari. Move the mouse pointer over the image. The current coordinates are displayed in the lower left corner in the order c, t, z, y, x. 
+
+Table~\ref{tab:napariNavigation} lists the the mouse controls of the napari-canvas. Use them to change the view of the image. If you get lost, you can press the {\tt Reset View (Home)} button in the lower left corner.
+
+\begin{table}[ht]
+\caption{Napari navigation}
+\label{tab:napariNavigation}
+\begin{center}
+\begin{tabular}{rl}
+    \hline
+    \multicolumn{2}{c}{Napari navigation}\\
+    rotate & left-button + drag \\
+    pan (shift) & shift + left button + drag\\
+    zoom &  right button + drag up and down  \\
+    perspective (shear) & shift + right button + drag up and down\\    
+    \hline
+\end{tabular}
+\end{center}
+\label{tab:multicol}
+\end{table}
+
+\section{Multi-channel images}
+
+Naparis uses sliders to access channels, time-points and z-slices (in 2D-mode). However, if we have multi-channel images, we often want to see an overlay (blending) of the channels. We can do this by treating each channel as a layer. We can switch from the slider representation to the layer representation of channels with the {\tt Split Stack} and {\tt Merge Stack} commands from the layer-context menu. 
+
+We will now see how to work with the overlay of multiple channels. Open the image {\tt DrosophilaEggVChamber.tif}\cite{sarah_machado_2018_1472859} in FIJI and get it into napari. The image has two channels. A channel can be hidden or displayed by clicking on its eye-symbol in the layers list. Use the {\tt layer controls} panel to change the colormaps of the channels. Adjust the contrast of each channel individually and try the different blending and rendering options. Note that for iso rendering and the attenuated mip rendering you need to set a threshold. 
+
+Depending on the rendering and blending, a dark or a light background may be preferable. You can switch between these two options using the {\tt ctrl+shift+t}-keyboard shortcut.
+
+The button {\tt Toggle grid mode} shows all layers next to each other.
+
+\begin{figure}[h!]
+  \centering
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{drosophilaEggChamber}
+    \caption[overlay]{Blended overlay of two channels.}
+    \label{labeled_nuclei}
+\end{subfigure}  
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{drosophilaEggChamber2}
+    \caption[grid]{Grid display of the two channels.}
+    \label{grid}
+\end{subfigure}  
+   \caption{Drosophila Egg Chamber.}
+   \label{drosophila_egg_chamber}
+\end{figure}
+
+\section{Slicing}
+
+It can be useful to inspect the 3D image slice by slice or to display orthogonal slices in the 3D view. 
+
+Switch to 2D-mode using the {\tt Toggle n-display}-button. You can use the slicer to move through the 2D-planes manually or press the play-button to loop through the slices. A right-click on the play-button allows to set the animation parameters.
+
+Instead of slicing from top to bottom we will now add ortho-slicers to the scene. Switch back to 3D-mode. Duplicate the second channel using the context menu of the channel in the layers list. Hide channel  two and switch the depiction of the copy of channel 2 from volume to plane. What we see now is a z-plane of channel 2. The number of slices projected onto the plane can be adjusted with the plane thickness slider. Using {\tt shift + left button + drag} on the plane you can change the position of the z-plane. Note that you might have to rotate the view to do this since you can not drag into the ''z-direction''.
+
+Make to more copys two add ortho-slices for the x and y plane normals.  
+
+Instead of slicing orthogonally along the x, y and z axes, we can use oblique slicers that will depend on the orientation of the view when they are added. Hide the ortho-slicers and add create an oblique slicer. 
+
+\begin{figure}[h!]
+  \centering
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{DrosophilaEggChamberOrtho}
+    \caption[overlayortho]{Three ortho-slices overlayed with the other channel.}
+    \label{overlay_ortho}
+\end{subfigure}  
+\begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{DrosophilaEggChamberOblique}
+    \caption[oblique]{An ortho-silce in oblique blending hides a part of the image.}
+    \label{oblique}
+\end{subfigure}  
+   \caption{Drosophila Egg Chamber Image with 2D Slicers.}
+   \label{drosophila_egg_chamber_slicers}
+\end{figure}
+
+\section{Creating a mosaic of slices}
+
+We will now display a mosaic of all the slices. Delete all layers except for the original channel two layer.  Set the interpolation to {\tt nearest}. From the context menu of the layer run {\tt Split Stack}. Switch to grid-mode. You should now see a mosaic of all slices. 
+
+The colors of the slices in the mosaic cycle through six colors. To display them all in the same color we will change the colormap of the layers. We can modify the properties of a number of layers in the same way, by linking them. With all layers selected, run {\tt Link Layers} from the context menu of a layer. Then select only one of the linked layers by clicking on it in the layers list. When you change its colormap the operation will be applied to all of the linked layers.
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[width=0.8\textwidth]{DrosophilaEggChamberMosaic}
+    \caption[Mosaic of the drosophila egg chamber image]{Mosaic of all slices of the drosophila egg chamber image.}
+    \label{mosaic}
+\end{figure}
+
+\section{Voxel size and scale bar} 
+
+You can add a scalebar from the menu {\tt View Scale Bar}. When using napari-j the voxel size is correctly set from the voxel size in ImageJ. When opening an image directly with napari, you can use the {\tt napari-calibration}-plugin to set the voxel size and unit. 
