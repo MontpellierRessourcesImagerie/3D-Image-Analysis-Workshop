@@ -9,4 +9,4 @@ Presentation slides:
 Exercises:
 
   * [2.0 - exercises - 3D Visualization.pdf](https://dev.mri.cnrs.fr/attachments/download/3493/2.0%20-%20exercises%20-%203D%20Visualization.pdf) - Images for the exercise: [exercise02.zip](https://dev.mri.cnrs.fr/attachments/download/3498/exercise02.zip)
-  * [3.0 - exercises - 3D Reconstruction](https://dev.mri.cnrs.fr/attachments/download/3500/exercise03.pdf)
+  * [3.0 - exercises - 3D Reconstruction](https://dev.mri.cnrs.fr/attachments/download/3500/exercise03.pdf) - Images for the exercise: [exercise03.zip](https://dev.mri.cnrs.fr/attachments/download/3501/exercise03.zip)
