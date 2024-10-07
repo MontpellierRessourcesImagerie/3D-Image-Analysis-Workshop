@@ -5,6 +5,7 @@ Presentation slides:
 
   2. [3D visualisation](https://dev.mri.cnrs.fr/attachments/download/3492/2.0_3D-visualisation.fodp)
   3. [3D reconstruction](https://dev.mri.cnrs.fr/attachments/download/3499/3.0-3D-reconstruction.fodp)
+  4. [3D deconvolution](https://dev.mri.cnrs.fr/attachments/download/3503/4.0-3D-deconvolution.fodp)
 
 Exercises:
 
